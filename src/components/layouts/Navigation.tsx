@@ -1,10 +1,11 @@
 "use client";
 
 import { twMerge as tw } from 'tailwind-merge';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@/components/atoms/Button';
+import Image from 'next/image';
 
-interface IMenuButton {
+interface MenuButton {
   toggleMenu: React.MouseEventHandler<HTMLButtonElement>;
   showMenu: boolean;
 }
@@ -48,7 +49,7 @@ const secondaryLinks = [
   },
 ];
 
-const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
+const MenuButton = ({ toggleMenu, showMenu }: MenuButton) => (
   <button
     type="button"
     aria-controls="mobile-menu"
@@ -114,7 +115,16 @@ const MobileMenu = () => (
 
 const Navigation = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <nav className={tw(`bg-white`)}>
@@ -122,7 +132,13 @@ const Navigation = () => {
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
-              <img className={tw(`h-12 w-12`)} src="logo.svg" alt="logo" width={48} height={48} />
+              {/* <img className={tw(`h-12 w-12`)} src="public/logo.svg" alt="logo" width={48} height={48} /> */}
+              <Image
+                src="svgs/logo.svg"
+                alt="logo"
+                width={48}
+                height={48}
+              />
             </div>
             <div className={tw(`hidden md:block`)}>
               <div className={tw(`ml-10 flex items-baseline space-x-4`)}>
