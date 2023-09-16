@@ -132,7 +132,6 @@ const Navigation = () => {
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
-              {/* <img className={tw(`h-12 w-12`)} src="public/logo.svg" alt="logo" width={48} height={48} /> */}
               <Image
                 src="svgs/logo.svg"
                 alt="logo"
