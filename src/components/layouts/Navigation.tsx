@@ -2,8 +2,10 @@
 
 import { twMerge as tw } from 'tailwind-merge';
 import { useEffect, useState } from 'react';
-import Button from '@/components/atoms/Button';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import Button from '@/components/atoms/Button';
 
 interface MenuButton {
   toggleMenu: React.MouseEventHandler<HTMLButtonElement>;
@@ -142,13 +144,13 @@ const Navigation = () => {
             <div className={tw(`hidden md:block`)}>
               <div className={tw(`ml-10 flex items-baseline space-x-4`)}>
                 {links.map((link: Link) => (
-                  <a
+                  <Link
                     key={link.label}
                     href={link.href}
                     className={tw(`text-gray-500 hover:text-gray-600 px-3 py-2 rounded-md font-medium`)}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
