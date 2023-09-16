@@ -1,7 +1,5 @@
-import Preferences from '@/public/svgs/preferences.svg';
-import Play from '@/public/svgs/play.svg';
-import { twMerge as tw } from 'tailwind-merge';
 import Image from 'next/image';
+import { twMerge as tw } from 'tailwind-merge';
 
 const PlayButton = () => (
   <button
@@ -13,7 +11,7 @@ const PlayButton = () => (
     aria-label='play video'
   >
     <Image
-      src={Play}
+      src='/svgs/play.svg'
       alt='play'
       width={24}
       height={24}
@@ -34,7 +32,7 @@ const VideoSection = () => (
         <div className={tw(`w-full`)}>
           <div className={tw(`relative shadow-2xl mx-6 lg:mx-0`)}>
             <Image
-              src={Preferences}
+              src='/svgs/preferences.svg'
               alt='preferences'
               width={1280}
               height={720}
