@@ -1,7 +1,7 @@
 "use client";
 
 import { twMerge as tw } from 'tailwind-merge';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -117,19 +117,10 @@ const MobileMenu = () => (
 
 const Navigation = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
   return (
-    <nav className={tw(`bg-white`)}>
+    <nav>
       <div className={tw(`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`)}>
         <div className={tw(`flex items-center justify-between h-24`)}>
           <div className={tw(`flex items-center`)}>
