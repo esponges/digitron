@@ -2,6 +2,7 @@
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
 import { experimental_useFormStatus as useFormStatus } from 'react-dom';
+import { experimental_useFormState as useFormState } from 'react-dom';
 import { twMerge as tw } from 'tailwind-merge';
 
 import Button from '@/components/atoms/Button';
@@ -16,6 +17,7 @@ function ContactUs() {
     message: string;
   }>({ message: OPTIMISTIC_MESSAGE });
   const { pending } = useFormStatus();
+  // const [_, formAction] = useFormState();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,6 +26,8 @@ function ContactUs() {
 
     console.log(res);
   };
+
+  console.log('form status pending', pending);
 
   return (
     <div className={tw(`w-full lg:w-1/2 mt-12 lg:mt-0`)}>
