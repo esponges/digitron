@@ -1,20 +1,25 @@
 'use client';
 
+import { experimental_useOptimistic as useOptimistic } from 'react';
+import { experimental_useFormStatus as useFormStatus } from 'react-dom';
 import { twMerge as tw } from 'tailwind-merge';
+
 import Button from '@/components/atoms/Button';
 import submit from '@/app/actions';
-import { experimental_useOptimistic } from 'react';
 
 const OPTIMISTIC_MESSAGE = `Thanks for reaching out! We'll get back to you soon.`;
 
 function ContactUs() {
-  // more details of optimistic updates in the docs 
+  // more details of optimistic updates in the docs
   // https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations#optimistic-updates
-  const [optimisticMessage, setOptimisticMessage] = experimental_useOptimistic<{
+  const [optimisticMessage, setOptimisticMessage] = useOptimistic<{
     message: string;
   }>({ message: OPTIMISTIC_MESSAGE });
+  const { pending } = useFormStatus();
 
-  const onSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('submitting...');
     const res = await submit();
 
     console.log(res);
@@ -26,18 +31,21 @@ function ContactUs() {
         <h4 className={tw(`font-mono text-sm uppercase text-gray-500 mb-3`)}>
           Dudas? Escríbenos
         </h4>
-        <div className={tw(`flex w-full`)}>
+        <form className={tw(`flex w-full`)} onSubmit={handleSubmit}>
           <input
             aria-label='email address'
-            value="foo"
+            value='foo'
             type='text'
             className={tw(
               `border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`
             )}
+            readOnly
             placeholder='Enter your email'
           />
-          <Button>Contáctanos</Button>
-        </div>
+          <Button type='submit'>
+            {!pending ? 'Contáctanos' : 'Enviando...'}
+          </Button>
+        </form>
       </div>
     </div>
   );
