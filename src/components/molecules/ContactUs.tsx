@@ -17,17 +17,9 @@ function ContactUs() {
     message: string;
   }>({ message: OPTIMISTIC_MESSAGE });
   const { pending } = useFormStatus();
-  // const [_, formAction] = useFormState();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submitting...');
-    const res = await submit();
-
-    console.log(res);
-  };
-
-  console.log('form status pending', pending);
+  const [formStatus, formAction] = useFormState(submit, {
+    message: '',
+  });
 
   return (
     <div className={tw(`w-full lg:w-1/2 mt-12 lg:mt-0`)}>
@@ -35,7 +27,11 @@ function ContactUs() {
         <h4 className={tw(`font-mono text-sm uppercase text-gray-500 mb-3`)}>
           Dudas? Escríbenos
         </h4>
-        <form className={tw(`flex w-full`)} onSubmit={handleSubmit}>
+        <form
+          className={tw(`flex w-full`)}
+          // onSubmit={handleSubmit}
+          action={formAction}
+        >
           <input
             aria-label='email address'
             value='foo'
@@ -46,9 +42,8 @@ function ContactUs() {
             readOnly
             placeholder='Enter your email'
           />
-          <Button type='submit'>
-            {!pending ? 'Contáctanos' : 'Enviando...'}
-          </Button>
+          <Button type='submit'>Contáctanos</Button>
+          <p className={tw(`text-sm text-gray-500`)}>{formStatus.message}</p>
         </form>
       </div>
     </div>
