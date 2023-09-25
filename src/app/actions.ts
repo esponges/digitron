@@ -7,7 +7,7 @@ export default async function submit() {
     new Promise<void>((res) => {
       setTimeout(() => {
         res();
-      }, 1000);
+      }, 10000);
     });
     revalidatePath('/');
     return 'success';
@@ -15,5 +15,4 @@ export default async function submit() {
     console.error(e);
     return e;
   }
-
 }
