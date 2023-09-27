@@ -8,7 +8,7 @@ export default async function submit() {
     await new Promise<void>((res) => {
       setTimeout(() => {
         res();
-      }, 5000);
+      }, 2000);
     });
     // removing for the moment since it will cause app to go to the top of the page
     revalidatePath('/');

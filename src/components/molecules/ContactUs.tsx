@@ -1,7 +1,7 @@
 'use client';
 
 import { experimental_useOptimistic as useOptimistic } from 'react';
-import { experimental_useFormStatus as useFormStatus } from 'react-dom';
+
 import { experimental_useFormState as useFormState } from 'react-dom';
 import { twMerge as tw } from 'tailwind-merge';
 
@@ -16,7 +16,6 @@ function ContactUs() {
   const [optimisticMessage, setOptimisticMessage] = useOptimistic<{
     message: string;
   }>({ message: OPTIMISTIC_MESSAGE });
-  const { pending } = useFormStatus();
   const [formStatus, formAction] = useFormState(submit, {
     message: '',
   });

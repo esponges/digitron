@@ -1,4 +1,7 @@
+"use client";
+
 import { twMerge as tw } from 'tailwind-merge';
+import { experimental_useFormStatus as useFormStatus } from 'react-dom';
 
 interface Props {
   primary?: boolean;
@@ -6,6 +9,7 @@ interface Props {
   modifier?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
+  pendingMessage?: string;
 }
 
 const Button = ({
@@ -14,8 +18,12 @@ const Button = ({
   children,
   type = 'button',
   onClick,
+  pendingMessage = `Loading...`,
   ...rest
 }: Props) => {
+  // pending should be enabled in the child component that invokes the server action
+  const { pending } = useFormStatus();
+  
   const baseStyle = `font-sans font-medium py-2 px-4 border rounded`;
   const styles = primary
     ? `bg-indigo-600 text-white border-indigo-500 hover:bg-indigo-700`
@@ -28,7 +36,7 @@ const Button = ({
       className={tw(`${baseStyle} ${styles} ${modifier ?? ``}`)}
       {...rest}
     >
-      {children}
+      {pending ? pendingMessage : children}
     </button>
   );
 };

@@ -1,3 +1,5 @@
+// hack for getting the type declarations for useFormSatus that don't exist yet
+// https://github.com/vercel/next.js/issues/55919
 declare module 'react-dom' {
   function experimental_useFormState<State>(
     action: (state: State) => Promise<State>,
@@ -10,7 +12,7 @@ declare module 'react-dom' {
     initialState: State,
     permalink?: string
   ): [state: State, dispatch: (payload: Payload) => void];
-  
+
   interface FormStatusNotPending {
     pending: false;
     data: null;
