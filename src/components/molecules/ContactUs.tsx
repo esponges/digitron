@@ -7,6 +7,8 @@ import Button from '@/components/atoms/Button';
 import submit from '@/app/actions';
 
 function ContactUs() {
+  // todo: figure out how to pass argument to submit function from useFormState
+  // const [formStatus, formAction] = useFormState<{ formData: FormData }>(submit, {
   const [formStatus, formAction] = useFormState(submit, {
     message: '',
   });
@@ -34,7 +36,7 @@ function ContactUs() {
           <Button type='submit' pendingMessage='Enviando...'>Contáctanos</Button>
         </form>
         <p className={tw(`text-sm text-blue-500 mt-2`)}>
-          {formStatus.message}
+          {formStatus.message || formStatus.error}
         </p>
       </div>
     </div>
