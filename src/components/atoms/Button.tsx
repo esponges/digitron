@@ -10,6 +10,7 @@ interface Props {
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   pendingMessage?: string;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   type = 'button',
   onClick,
   pendingMessage = `Loading...`,
+  disabled = false,
   ...rest
 }: Props) => {
   // pending should be enabled in the child component that invokes the server action
@@ -34,6 +36,7 @@ const Button = ({
       type={type}
       onClick={onClick}
       className={tw(`${baseStyle} ${styles} ${modifier ?? ``}`)}
+      disabled={pending || disabled}
       {...rest}
     >
       {pending ? pendingMessage : children}

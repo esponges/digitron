@@ -1,21 +1,12 @@
 'use client';
 
-import { experimental_useOptimistic as useOptimistic } from 'react';
-
 import { experimental_useFormState as useFormState } from 'react-dom';
 import { twMerge as tw } from 'tailwind-merge';
 
 import Button from '@/components/atoms/Button';
 import submit from '@/app/actions';
 
-const OPTIMISTIC_MESSAGE = `Thanks for reaching out! We'll get back to you soon.`;
-
 function ContactUs() {
-  // more details of optimistic updates in the docs
-  // https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations#optimistic-updates
-  const [optimisticMessage, setOptimisticMessage] = useOptimistic<{
-    message: string;
-  }>({ message: OPTIMISTIC_MESSAGE });
   const [formStatus, formAction] = useFormState(submit, {
     message: '',
   });
@@ -28,7 +19,6 @@ function ContactUs() {
         </h4>
         <form
           className={tw(`flex w-full`)}
-          // onSubmit={handleSubmit}
           action={formAction}
         >
           <input
@@ -41,9 +31,11 @@ function ContactUs() {
             readOnly
             placeholder='Enter your email'
           />
-          <Button type='submit'>Contáctanos</Button>
-          <p className={tw(`text-sm text-gray-500`)}>{formStatus.message}</p>
+          <Button type='submit' pendingMessage='Enviando...'>Contáctanos</Button>
         </form>
+        <p className={tw(`text-sm text-blue-500 mt-2`)}>
+          {formStatus.message}
+        </p>
       </div>
     </div>
   );
