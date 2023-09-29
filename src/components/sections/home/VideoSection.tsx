@@ -1,50 +1,36 @@
-import Image from 'next/image';
+'use client';
+
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/styles.css';
 import { twMerge as tw } from 'tailwind-merge';
 
-const PlayButton = () => (
-  <button
-    type='button'
-    className={tw(
-      `w-64 lg:w-auto absolute top-full left-1/2 flex items-center transform
-      -translate-y-1/2 -translate-x-1/2 bg-white rounded-full font-medium group p-4 shadow-xl`
-    )}
-    aria-label='play video'
-  >
-    <Image
-      src='/svgs/play.svg'
-      alt='play'
-      width={24}
-      height={24}
-      className={tw(
-        `w-6 h-6 fill-current text-gray-400 group-hover:text-blue-600 flex-shrink-0`
-      )}
-    />
-    <span className={tw(`ml-3`)}>Watch the video (5 min)</span>
-  </button>
-);
+const CARROUSEL_IMAGES = [
+  {
+    source: '/images/hp_printer.jpg',
+    alt: 'printer',
+  },
+  {
+    source: '/images/hp_toner.jpg',
+    alt: 'toner',
+  },
+];
 
-const VideoSection = () => (
-  <section
-    className={tw(`bg-gradient-to-b from-gray-50 to-white shadow-inner`)}
-  >
-    <div className={tw(`max-w-7xl mx-auto`)}>
-      <div className={tw(`flex flex-col max-w-4xl mx-auto pt-28`)}>
-        <div className={tw(`w-full`)}>
-          <div className={tw(`relative shadow-2xl mx-6 lg:mx-0`)}>
-            <Image
-              src='/svgs/preferences.svg'
-              alt='preferences'
-              width={1280}
-              height={720}
-              className={tw(`rounded-lg`)}
-              priority
-            />
-            <PlayButton />
+const VideoSection = () => {
+  return (
+    <section
+      className={tw(`bg-gradient-to-b from-gray-50 to-white shadow-inner`)}
+    >
+      <div className={tw(`max-w-7xl mx-auto`)}>
+        <div className={tw(`flex flex-col max-w-4xl mx-auto pt-28`)}>
+          <div className={tw(`w-full`)}>
+            <div className={tw(`relative shadow-2xl mx-6 lg:mx-0`)}>
+              <AwesomeSlider startup bullets media={CARROUSEL_IMAGES} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default VideoSection;
