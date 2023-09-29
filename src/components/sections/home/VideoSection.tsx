@@ -1,8 +1,9 @@
 'use client';
 
 import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
 import { twMerge as tw } from 'tailwind-merge';
+import withAutoplay from 'react-awesome-slider/dist/autoplay';
+import 'react-awesome-slider/dist/styles.css';
 
 const CARROUSEL_IMAGES = [
   {
@@ -15,6 +16,8 @@ const CARROUSEL_IMAGES = [
   },
 ];
 
+const AutoplaySlider = withAutoplay(AwesomeSlider);
+
 const VideoSection = () => {
   return (
     <section
@@ -24,7 +27,7 @@ const VideoSection = () => {
         <div className={tw(`flex flex-col max-w-4xl mx-auto pt-28`)}>
           <div className={tw(`w-full`)}>
             <div className={tw(`relative shadow-2xl mx-6 lg:mx-0`)}>
-              <AwesomeSlider startup bullets media={CARROUSEL_IMAGES} />
+              <AutoplaySlider play interval={3000} media={CARROUSEL_IMAGES} />
             </div>
           </div>
         </div>
