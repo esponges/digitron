@@ -35,7 +35,7 @@ function ContactUs() {
           />
           <Button type='submit' pendingMessage='Enviando...'>Contáctanos</Button>
         </form>
-        <p className={tw(`text-sm text-blue-500 mt-2`)}>
+        <p className={tw(`text-sm text-blue-500 mt-2`, formStatus.error && "text-red-500")}>
           {formStatus.message || formStatus.error}
         </p>
       </div>
