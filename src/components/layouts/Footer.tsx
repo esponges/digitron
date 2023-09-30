@@ -39,13 +39,13 @@ const Footer = () => (
     >
       <div className={tw(`mb-14 flex items-center w-full`)}>
         <Image
-          src='/svgs/logo.svg'
+          src='/images/digitron-square-blue.jpg'
           alt='logo'
           width={48}
           height={48}
           className={tw(`h-12 w-12 mr-4`)}
         />
-        <p className={tw(`text-4xl text-indigo-500 font-bold`)}>STARTD</p>
+        <p className={tw(`text-4xl text-indigo-500 font-bold`)}>DIGITRON MX</p>
       </div>
       <div className={tw(`w-full lg:w-1/2`)}>
         <ul className={tw(`text-lg font-light flex flex-wrap w-full`)}>

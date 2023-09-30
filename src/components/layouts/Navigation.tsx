@@ -126,7 +126,7 @@ const Navigation = () => {
           <div className={tw(`flex items-center`)}>
             <div className={tw(`flex-shrink-0`)}>
               <Image
-                src="svgs/logo.svg"
+                src="/images/digitron-square-blue.jpg"
                 alt="logo"
                 width={48}
                 height={48}
@@ -148,9 +148,7 @@ const Navigation = () => {
           </div>
           <div className={tw(`hidden md:block`)}>
             <div className={tw(`ml-4 flex items-center md:ml-6`)}>
-              <Button modifier="border-0 mr-2">Contact sales</Button>
-              <Button modifier="border-0 mr-2">Log in</Button>
-              <Button primary>Get started</Button>
+              <Button primary modifier="border-0 mr-2">Contáctanos</Button>
             </div>
           </div>
           <div className={tw(`-mr-2 flex md:hidden`)}>
