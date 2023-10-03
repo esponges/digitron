@@ -27,6 +27,7 @@ function ContactUs() {
             aria-label='email address'
             value='foo'
             type='text'
+            name='email'
             className={tw(
               `border border-gray-300 bg-gray-100 min-w-0 w-full rounded text-gray-800 py-2 px-3 mr-2`
             )}
