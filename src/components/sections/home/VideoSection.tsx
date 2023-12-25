@@ -14,6 +14,10 @@ const CARROUSEL_IMAGES = [
     source: '/images/hp_toner.jpg',
     alt: 'toner',
   },
+  {
+    source: '/images/ricoh_series.jpg',
+    alt: 'ricoh',
+  },
 ];
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);

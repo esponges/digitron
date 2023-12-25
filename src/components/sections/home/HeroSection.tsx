@@ -17,6 +17,13 @@ const CUSTOMERS = [
     height: 120,
     className: tw(`m-12 mb-8`),
   },
+  {
+    src: '/images/bbox.jpg',
+    alt: 'bbox-logo',
+    width: 120,
+    height: 120,
+    className: tw(`m-12 mb-8`),
+  },
 ];
 
 const HeroSection = () => (
@@ -34,13 +41,13 @@ const HeroSection = () => (
           `font-sans font-bold text-4xl md:text-5xl lg:text-8xl text-center leading-snug text-gray-800`
         )}
       >
-        Impresoras y toners a tu alcance
+        Soluciones completas en copiado, impresión y escaneo
       </h1>
       <div className={tw(`max-w-xl mx-auto`)}>
         <p
           className={tw(`mt-10 text-gray-500 text-center text-xl lg:text-3xl`)}
         >
-          Te brindamos la mejor calidad en impresoras y toners para tu negocio
+         Expertos en Copiadoras e Impresoras <br/>Venta y Renta con Soporte Garantizado
         </p>
       </div>
       <div
