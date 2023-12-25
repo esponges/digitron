@@ -1,6 +1,6 @@
 'use client';
 
-import { experimental_useFormState as useFormState } from 'react-dom';
+import { useFormState } from 'react-dom';
 import { twMerge as tw } from 'tailwind-merge';
 
 import Button from '@/components/atoms/Button';
